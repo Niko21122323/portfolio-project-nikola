@@ -1,7 +1,8 @@
-const HamburgerMenu = () => {
+const HamburgerMenu = ({ clickEvent }: { clickEvent: () => void }) => {
   return (
     <button
       type="button"
+      onClick={clickEvent}
       className="relative overflow-hidden w-12 h-4 cursor-pointer"
     >
       <div className="absolute top-0 left-0 h-0.5 w-full bg-dark"></div>
