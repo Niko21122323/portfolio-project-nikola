@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, cubicBezier } from "framer-motion"; // added cubicBezier
 import ButtonPrimary from "./ButtonPrimary";
 import HamburgerMenu from "./HamburgerMenu";
 
@@ -15,10 +15,13 @@ const Navbar = () => {
 
   const menuSlide = {
     initial: { x: "calc(100% + 100px)" },
-    enter: { x: "0", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+    enter: {
+      x: "0",
+      transition: { duration: 0.8, ease: cubicBezier(0.76, 0, 0.24, 1) },
+    },
     exit: {
       x: "calc(100% + 100px)",
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+      transition: { duration: 0.8, ease: cubicBezier(0.76, 0, 0.24, 1) }, // <-- fixed
     },
   };
 
@@ -28,11 +31,11 @@ const Navbar = () => {
     },
     enter: {
       d: targetPath,
-      transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
+      transition: { duration: 1, ease: cubicBezier(0.76, 0, 0.24, 1) }, // <-- fixed
     },
     exit: {
       d: initialPath,
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+      transition: { duration: 0.8, ease: cubicBezier(0.76, 0, 0.24, 1) }, // <-- fixed
     },
   };
 
@@ -56,7 +59,10 @@ const Navbar = () => {
                 <ButtonPrimary title="Github" link="https://github.com" />
               </div>
               <div className="ml-2">
-                <HamburgerMenu clickEvent={() => setIsMenuOpen(!isMenuOpen)} />
+                <HamburgerMenu
+                  isActive={isMenuOpen}
+                  clickEvent={() => setIsMenuOpen(!isMenuOpen)}
+                />
               </div>
             </div>
           </div>
@@ -73,6 +79,7 @@ const Navbar = () => {
             className="fixed right-0 top-0 h-screen w-[30%] bg-dark z-50"
           >
             <svg className="absolute top-0 left-[-99px] w-[100px] h-full fill-dark stroke-none pointer-events-none">
+              <title>Menu curve background</title>
               <motion.path
                 variants={curve}
                 initial="initial"
@@ -81,6 +88,7 @@ const Navbar = () => {
               />
             </svg>
             <button
+              type="button"
               onClick={() => setIsMenuOpen(false)}
               className="text-white text-5xl"
             >
