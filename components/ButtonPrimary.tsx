@@ -31,16 +31,13 @@ const ButtonPrimary = ({ title, link }: { title: string; link: string }) => {
       href={link}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex items-center w-full bg-body px-6 py-2.5 rounded-full overflow-hidden outline outline-dark hover:outline-primary transition-colors duration-300 ease-in-out group"
+      className="relative flex items-center w-full bg-primary text-white px-6 py-2.5 rounded-full overflow-hidden transition-colors duration-300 ease-in-out group"
       style={{
         transform: `translate(${buttonPosition.x}px, ${buttonPosition.y}px)`,
         transition: "transform 0.1s ease-out",
       }}
     >
-      <span className="relative z-10 text-dark translate-x-3 group-hover:translate-x-0 group-hover:text-body transition-all duration-300 ease-in-out">
-        {title}
-      </span>
-      <div className="absolute bottom-1/2 translate-y-1/2 left-3 size-2 bg-primary rounded-full group-hover:h-full group-hover:size-full group-hover:left-0 transition-all duration-300 ease-in-out"></div>
+      {title}
     </Link>
   );
 };

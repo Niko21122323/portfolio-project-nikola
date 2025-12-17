@@ -1,16 +1,34 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const delight = localFont({
+  src: [
+    { path: "../public/fonts/Delight-Thin.woff2", weight: "100" },
+    { path: "../public/fonts/Delight-ExtraLight.woff2", weight: "200" },
+    { path: "../public/fonts/Delight-Light.woff2", weight: "300" },
+    { path: "../public/fonts/Delight-Regular.woff2", weight: "400" },
+    { path: "../public/fonts/Delight-Medium.woff2", weight: "500" },
+    { path: "../public/fonts/Delight-SemiBold.woff2", weight: "600" },
+    { path: "../public/fonts/Delight-Bold.woff2", weight: "700" },
+    { path: "../public/fonts/Delight-ExtraBold.woff2", weight: "800" },
+    { path: "../public/fonts/Delight-Black.woff2", weight: "900" },
+  ],
+  variable: "--font-delight",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -26,8 +44,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-body overflow-x-clip`}
+        suppressHydrationWarning
+        className={`${inter.variable} ${poppins.variable} ${delight.variable} relative antialiased bg-white overflow-x-clip`}
       >
+        <div className="min-h-screen w-full bg-transparent fixed z-[-1]">
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              background: "transparent",
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.30) 1px, transparent 0)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+        </div>
         <Navbar />
         {children}
       </body>

@@ -1,7 +1,13 @@
+import HeroSection from "@/components/HeroSection";
+import AboutSectionHomePage from "@/components/AboutSectionHomePage";
+import MyStorySection from "@/components/MyStorySection";
+
 export default function Home() {
   return (
-    <section>
-      <h1>Hello!</h1>
-    </section>
+    <>
+      <HeroSection />
+      <AboutSectionHomePage />
+      <MyStorySection />
+    </>
   );
 }

@@ -1,21 +1,46 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, cubicBezier } from "framer-motion";
-import ButtonPrimary from "./ButtonPrimary";
+import { gsap } from "gsap";
 import HamburgerMenu from "./HamburgerMenu";
 import { pageLinks, socialLinks } from "@/data/data";
 import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [screenHeight, setScreenHeight] = useState(1000);
   const [linkPositions, setLinkPositions] = useState<{
     [key: string]: { x: number; y: number };
   }>({});
   const linkRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
+  const navRef = useRef<HTMLDivElement>(null);
 
-  const screenHeight =
-    typeof window !== "undefined" ? window.innerHeight : 1000;
+  useEffect(() => {
+    setScreenHeight(window.innerHeight);
+  }, []);
+
+  useEffect(() => {
+    if (!navRef.current) return;
+
+    gsap.fromTo(
+      navRef.current,
+      {
+        y: "-300px",
+        opacity: 0,
+        scale: 0.2,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "elastic.out(1,0.8)",
+        delay: 0.2,
+      },
+    );
+  }, []);
+
   const initialPath = `M100 0 L100 ${screenHeight} Q-100 ${screenHeight / 2} 100 0`;
   const targetPath = `M100 0 L100 ${screenHeight} Q100 ${screenHeight / 2} 100 0`;
 
@@ -67,29 +92,32 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-8">
-            <div className="bg-primary rounded-full size-10"></div>
-            <div className="flex items-center justify-between gap-2">
-              <div className="w-fit max-md:hidden">
-                <ButtonPrimary
-                  title="stojanovski21n@gmail.com"
-                  link="mailto:stojanovski21n@gmail.com"
-                />
-              </div>
-              <div className="w-fit">
-                <ButtonPrimary title="Linkedin" link="https://linkedin.com" />
-              </div>
-              <div className="w-fit">
-                <ButtonPrimary title="Github" link="https://github.com" />
-              </div>
-              <div className="ml-2">
-                <HamburgerMenu
-                  isActive={isMenuOpen}
-                  clickEvent={() => setIsMenuOpen(!isMenuOpen)}
-                />
-              </div>
+      <nav className="absolute top-0 left-0 w-full z-50">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-center max-w-3xl mx-auto p-6">
+            <div
+              ref={navRef}
+              className="bg-body/50 backdrop-blur-3xl flex items-center justify-between gap-24 p-4 rounded-xl border border-dark/5 w-full"
+            >
+              <Link href="/" className="font-bold">
+                <h6>Nikola</h6>
+              </Link>
+              <ul className="flex items-center gap-6">
+                <li>
+                  <Link href="/about">About Me</Link>
+                </li>
+                <li>
+                  <Link href="/projects">My Projects</Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-white bg-primary px-4 py-1.5 rounded-lg"
+                  >
+                    Let's Chat
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -115,13 +143,12 @@ const Navbar = () => {
             </svg>
             <div className="py-8 h-full">
               <div className="flex items-center justify-end px-6">
-                <button
-                  type="button"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-white text-5xl"
-                >
-                  X
-                </button>
+                <div className="bg-primary flex items-center justify-center size-16 rounded-lg">
+                  <HamburgerMenu
+                    isActive={isMenuOpen}
+                    clickEvent={() => setIsMenuOpen(!isMenuOpen)}
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col justify-end h-full w-full pb-6">
