@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useEffect, ReactNode } from "react";
+import { useRef, ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -19,7 +20,7 @@ export default function ScrollAnimation({
 }: ScrollAnimationProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!contentRef.current) return;
 
     const content = contentRef.current;
@@ -64,7 +65,7 @@ export default function ScrollAnimation({
       content.querySelectorAll(".word-reveal"),
     ) as HTMLElement[];
     const totalWords = words.length;
-    const colors = ["#87bbd7", "#f9b95c", "#d7897f"];
+    const colors = ["#7b61ff", "#ffe459", "#ff5e54"];
 
     words.forEach((word, index) => {
       const colorIndex = index % colors.length;
@@ -138,7 +139,7 @@ export default function ScrollAnimation({
   }, [children]);
 
   return (
-    <div ref={contentRef} className={`w-full ${className}`}>
+    <div ref={contentRef} className={`${className}`}>
       {children}
     </div>
   );

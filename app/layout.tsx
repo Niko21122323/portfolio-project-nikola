@@ -3,6 +3,8 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
+import "lenis/dist/lenis.css";
+import { LenisProvider } from "@/components/providers/lenis-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -59,7 +61,7 @@ export default function RootLayout({
           />
         </div>
         <Navbar />
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );

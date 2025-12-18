@@ -31,7 +31,7 @@ const ButtonPrimary = ({ title, link }: { title: string; link: string }) => {
       href={link}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex items-center w-full bg-primary text-white px-6 py-2.5 rounded-full overflow-hidden transition-colors duration-300 ease-in-out group"
+      className="relative flex items-center w-full bg-primary text-white px-6 py-2.5 rounded-full overflow-hidden outline-2 outline-dark transition-colors duration-300 ease-in-out group"
       style={{
         transform: `translate(${buttonPosition.x}px, ${buttonPosition.y}px)`,
         transition: "transform 0.1s ease-out",

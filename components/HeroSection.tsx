@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import heroImage from "../public/assets/images/my-image.jpg";
+import { useGSAP } from "@gsap/react";
 import ButtonPrimary from "./ButtonPrimary";
 import LoadTextAnimation from "./LoadTextAnimation";
 
@@ -12,8 +13,9 @@ const HeroSection = () => {
   const button1Ref = useRef<HTMLDivElement>(null);
   const button2Ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!imageRef.current) return;
+  useGSAP(() => {
+    if (!imageRef.current || !button1Ref.current || !button2Ref.current) return;
+
     gsap.fromTo(
       imageRef.current,
       {
@@ -30,12 +32,7 @@ const HeroSection = () => {
         delay: 0.2,
       },
     );
-  }, []);
 
-  useEffect(() => {
-    if (!button1Ref.current || !button2Ref.current) return;
-
-    // First button
     gsap.fromTo(
       button1Ref.current,
       {
@@ -53,7 +50,6 @@ const HeroSection = () => {
       },
     );
 
-    // Second button with extra delay
     gsap.fromTo(
       button2Ref.current,
       {
@@ -67,7 +63,7 @@ const HeroSection = () => {
         scale: 1,
         duration: 1.5,
         ease: "elastic.out(1,0.8)",
-        delay: 1.2, // 0.2s more delay
+        delay: 1.2,
       },
     );
   }, []);
@@ -89,7 +85,7 @@ const HeroSection = () => {
             <p className="text-dark/80 text-lg pt-6">Hi! I'm Nikola</p>
           </LoadTextAnimation>
           <LoadTextAnimation delay={0.8}>
-            <h1 className="text-dark text-4xl font-medium text-center max-w-[700px] pt-4">
+            <h1 className="text-dark text-3xl sm:text-4xl font-medium text-center max-w-[700px] pt-4">
               Full-stack developer focused on building thoughtful web
               experiences from start to finish.
             </h1>

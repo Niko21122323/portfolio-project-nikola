@@ -3,9 +3,9 @@
 :root {
   --dark: #0d0e0e;
   --body: #f2f2f2;
-  --primary: #87bbd7;
-  --secondary: #f9b95c;
-  --acccent: #d7897f;
+  --primary: #7b61ff;
+  --secondary: #ffe459;
+  --acccent: #ff5e54;
 }
 
 @theme inline {
@@ -63,10 +63,6 @@ h6 {
   z-index: 1;
 }
 
-.circle-container {
-  position: relative;
-}
-
 .circle {
   height: 250%;
   width: 120%;
@@ -75,4 +71,18 @@ h6 {
   background-color: var(--dark);
   z-index: 1;
   position: absolute;
+}
+
+.card {
+  position: relative;
+}
+
+#card-1 .card-inner {
+  background-color: var(--primary);
+}
+#card-2 .card-inner {
+  background-color: var(--secondary);
+}
+#card-3 .card-inner {
+  background-color: var(--acccent);
 }
