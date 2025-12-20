@@ -70,8 +70,23 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden">
+      <div className="min-h-screen bg-transparent absolute h-full w-full">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: `
+       radial-gradient(ellipse 140% 50% at 15% 40%, rgba(123, 97, 255, 0.11), transparent 48%),
+       radial-gradient(ellipse 90% 80% at 85% 75%, rgba(123, 97, 255, 0.09), transparent 58%),
+       radial-gradient(ellipse 120% 65% at 40% 10%, rgba(123, 97, 255, 0.13), transparent 52%),
+       radial-gradient(ellipse 100% 45% at 70% 95%, rgba(123, 97, 255, 0.07), transparent 42%),
+       radial-gradient(ellipse 80% 75% at 90% 20%, rgba(123, 97, 255, 0.10), transparent 55%),
+       transparent
+     `,
+          }}
+        />
+      </div>
       <div className="relative container mx-auto px-4 z-10">
-        <div className="min-h-screen flex flex-col items-center justify-center mt-12">
+        <div className="min-h-screen flex flex-col items-center justify-center">
           <div ref={imageRef}>
             <Image
               src={heroImage}
@@ -81,21 +96,22 @@ const HeroSection = () => {
               className="size-20 object-cover rounded-full"
             />
           </div>
-          <LoadTextAnimation>
-            <p className="text-dark/80 text-lg pt-6">Hi! I'm Nikola</p>
-          </LoadTextAnimation>
-          <LoadTextAnimation delay={0.8}>
-            <h1 className="text-dark text-3xl sm:text-4xl font-medium text-center max-w-[700px] pt-4">
-              Full-stack developer focused on building thoughtful web
-              experiences from start to finish.
-            </h1>
-          </LoadTextAnimation>
-          <div className="flex items-center gap-2 pt-8">
+          <p className="text-white/80 text-lg border border-white/30 rounded-full px-4 py-2 mt-6 leading-none">
+            Hi! I'm Nikola
+          </p>
+          <h1 className="text-white text-3xl sm:text-5xl font-medium text-center max-w-[800px] pt-4">
+            Full-stack developer building thoughtful web experiences.
+          </h1>
+          <div className="flex items-center gap-2 pt-10">
             <div ref={button1Ref} className="w-fit">
               <ButtonPrimary title="About Me" link="/about" />
             </div>
             <div ref={button2Ref} className="w-fit">
-              <ButtonPrimary title="Contact Me" link="/contact" />
+              <ButtonPrimary
+                title="Contact Me"
+                link="/contact"
+                direction="reverse"
+              />
             </div>
           </div>
         </div>

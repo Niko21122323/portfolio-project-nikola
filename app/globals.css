@@ -73,16 +73,23 @@ h6 {
   position: absolute;
 }
 
-.card {
-  position: relative;
+.gradient-border-y {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    )
+    1;
 }
 
-#card-1 .card-inner {
-  background-color: var(--primary);
-}
-#card-2 .card-inner {
-  background-color: var(--secondary);
-}
-#card-3 .card-inner {
-  background-color: var(--acccent);
+.gradient-button {
+  background: #7b61ff;
+  background: linear-gradient(
+    10deg,
+    rgba(123, 97, 255, 0.5) 0%,
+    rgba(13, 14, 14, 1) 70%
+  );
 }

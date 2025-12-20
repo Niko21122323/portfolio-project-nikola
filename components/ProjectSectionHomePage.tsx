@@ -78,7 +78,7 @@ const ProjectSectionHomePage = () => {
             id={`card-${index + 1}`}
             key={project.index}
           >
-            <div className="card-inner relative grid grid-cols-5 md:grid-cols-12 gap-4 md:gap-10 will-change-transform w-full h-full p-6 md:p-10 rounded-3xl border-3 border-dark">
+            <div className="card-inner relative grid grid-cols-5 md:grid-cols-12 gap-4 md:gap-10 bg-body will-change-transform w-full h-full p-6 md:p-10 rounded-3xl border-3 border-dark">
               <div className="card-content col-span-3 md:col-span-7">
                 <h4 className="text-dark font-medium text-2xl md:text-4xl pb-4">
                   {project.title}

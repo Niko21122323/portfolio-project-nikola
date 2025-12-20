@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import HamburgerMenu from "./HamburgerMenu";
 import { pageLinks, socialLinks } from "@/data/data";
 import Link from "next/link";
+import ButtonPrimary from "./ButtonPrimary";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -94,29 +95,28 @@ const Navbar = () => {
     <>
       <nav className="absolute top-0 left-0 w-full z-50">
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-center max-w-3xl mx-auto p-6">
+          <div className="flex items-center justify-center mx-auto py-8">
             <div
               ref={navRef}
-              className="bg-body/50 backdrop-blur-3xl flex items-center justify-between gap-24 p-4 rounded-xl border border-dark/5 w-full"
+              className="flex items-center justify-between w-full"
             >
-              <Link href="/" className="font-bold">
+              <Link href="/" className="font-bold text-white">
                 <h6>Nikola</h6>
               </Link>
               <ul className="flex items-center gap-6">
                 <li>
-                  <Link href="/about">About Me</Link>
-                </li>
-                <li>
-                  <Link href="/projects">My Projects</Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="text-white bg-primary px-4 py-1.5 rounded-lg"
-                  >
-                    Let's Chat
+                  <Link href="/about" className="text-white">
+                    About Me
                   </Link>
                 </li>
+                <li>
+                  <Link href="/projects" className="text-white">
+                    My Projects
+                  </Link>
+                </li>
+                <div className="w-fit">
+                  <ButtonPrimary title="Let's Chat" link="/contact" />
+                </div>
               </ul>
             </div>
           </div>

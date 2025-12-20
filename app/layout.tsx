@@ -47,19 +47,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${poppins.variable} ${delight.variable} relative antialiased bg-white overflow-x-clip`}
+        className={`${inter.variable} ${poppins.variable} ${delight.variable} relative antialiased bg-dark overflow-x-clip`}
       >
-        <div className="min-h-screen w-full bg-transparent fixed z-[-1]">
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              background: "transparent",
-              backgroundImage:
-                "radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.30) 1px, transparent 0)",
-              backgroundSize: "20px 20px",
-            }}
-          />
-        </div>
         <Navbar />
         <LenisProvider>{children}</LenisProvider>
       </body>
