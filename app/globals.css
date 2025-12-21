@@ -84,12 +84,20 @@ h6 {
     )
     1;
 }
-
 .gradient-button {
   background: #7b61ff;
   background: linear-gradient(
     10deg,
     rgba(123, 97, 255, 0.5) 0%,
     rgba(13, 14, 14, 1) 70%
+  );
+}
+.gradient-border-diagonal {
+  background: #7b61ff;
+  background: linear-gradient(
+    45deg,
+    rgba(123, 97, 255, 0.3) 0%,
+    rgba(13, 14, 14, 0) 50%,
+    rgba(123, 97, 255, 0.3) 100%
   );
 }
