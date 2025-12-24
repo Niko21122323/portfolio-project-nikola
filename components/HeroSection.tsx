@@ -104,13 +104,17 @@ const HeroSection = () => {
           </h1>
           <div className="flex items-center gap-2 pt-10">
             <div ref={button1Ref} className="w-fit">
-              <ButtonPrimary title="About Me" link="/about" />
+              <ButtonPrimary
+                title="About Me"
+                link="/about"
+                hoverColor="light"
+              />
             </div>
             <div ref={button2Ref} className="w-fit">
               <ButtonPrimary
                 title="Contact Me"
                 link="/contact"
-                direction="reverse"
+                hoverColor="light"
               />
             </div>
           </div>

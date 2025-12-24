@@ -4,8 +4,8 @@
   --dark: #0d0e0e;
   --body: #f2f2f2;
   --primary: #7b61ff;
-  --secondary: #ffe459;
-  --acccent: #ff5e54;
+  --secondary: #dff700;
+  --accent: #ff5e54;
 }
 
 @theme inline {
@@ -26,7 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-poppins);
+  font-family: var(--font-inter);
 }
 
 .wrapper {
@@ -37,7 +37,7 @@ h6 {
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: var(--dark);
+  background-color: var(--body);
   z-index: 1;
 }
 
@@ -51,7 +51,7 @@ h6 {
   width: 120%;
   left: -10%;
   border-radius: 50% 50% 0 0;
-  background-color: var(--dark);
+  background-color: var(--body);
   z-index: 1;
   position: absolute;
   bottom: 0;
@@ -63,24 +63,30 @@ h6 {
   z-index: 1;
 }
 
+.circle-container {
+  position: relative;
+  pointer-events: none;
+}
+
 .circle {
   height: 250%;
   width: 120%;
   left: -10%;
   border-radius: 0 0 50% 50%;
-  background-color: var(--dark);
+  background-color: var(--body);
   z-index: 1;
   position: absolute;
 }
 
 .gradient-border-y {
-  border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(
       to right,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
+      rgba(13, 14, 14, 0),
+      rgba(13, 14, 14, 0.1),
+      rgba(13, 14, 14, 0.2),
+      rgba(13, 14, 14, 0.1),
+      rgba(13, 14, 14, 0)
     )
     1;
 }
