@@ -128,7 +128,7 @@ const ButtonPrimary = ({
       </span>
       <span className="relative z-10 block text-dark bg-secondary rounded-full px-6 py-2 overflow-hidden">
         <span
-          className={`relative z-10 transition-colors duration-300 ${hoverColor === "light" ? "" : "group-hover:text-body"}`}
+          className={`relative z-10 transition-colors duration-300 ease-in-out ${hoverColor === "light" ? "" : "group-hover:text-body"}`}
         >
           {title}
         </span>

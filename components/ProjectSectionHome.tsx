@@ -2,7 +2,7 @@ import ProjectStack from "./ProjectStack";
 
 const ProjectSectionHome = () => {
   return (
-    <section className="py-24 border-b gradient-border-y">
+    <section className="border-b gradient-border-y bg-body">
       <ProjectStack />
     </section>
   );

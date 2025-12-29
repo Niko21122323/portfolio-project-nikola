@@ -16,6 +16,14 @@
   --color-accent: var(--accent);
 }
 
+#smooth-wrapper {
+  overflow: hidden;
+}
+
+#smooth-content {
+  overflow: visible;
+}
+
 body {
   font-family: var(--font-inter);
 }
@@ -47,7 +55,7 @@ h6 {
 }
 
 .top-circle {
-  height: 250%;
+  height: 350%;
   width: 120%;
   left: -10%;
   border-radius: 50% 50% 0 0;
@@ -69,7 +77,7 @@ h6 {
 }
 
 .circle {
-  height: 250%;
+  height: 350%;
   width: 120%;
   left: -10%;
   border-radius: 0 0 50% 50%;

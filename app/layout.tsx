@@ -3,8 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
-import "lenis/dist/lenis.css";
-import { LenisProvider } from "@/components/providers/lenis-provider";
+import { SmoothScrollProvider } from "@/components/providers/gsap-smooth-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -47,10 +46,12 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${poppins.variable} ${delight.variable} relative antialiased bg-dark overflow-x-clip`}
+        className={`${inter.variable} ${poppins.variable} ${delight.variable} relative antialiased bg-dark`}
       >
-        <Navbar />
-        <LenisProvider>{children}</LenisProvider>
+        <SmoothScrollProvider>
+          <Navbar />
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

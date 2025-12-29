@@ -10,28 +10,34 @@ interface CurvedSectionProps {
 
 export default function CurvedAnimation({ children }: CurvedSectionProps) {
   const container = useRef(null);
+  const lastRefreshValue = useRef(0);
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
   });
+
   const bottomHeight = useTransform(scrollYProgress, [0, 1], [50, 0]);
   const topHeight = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const bottomHeightVh = useTransform(bottomHeight, (value) => `${value}vh`);
   const topHeightVh = useTransform(topHeight, (value) => `${value}vh`);
 
   useEffect(() => {
-    let rafId: number;
+    // Only refresh when scroll progress crosses certain thresholds
+    // This reduces refresh calls dramatically
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      const threshold = 0.1; // Refresh every 10% of scroll progress
+      const currentBucket = Math.floor(latest / threshold);
+      const lastBucket = Math.floor(lastRefreshValue.current / threshold);
 
-    const unsubscribe = scrollYProgress.on("change", () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
+      if (currentBucket !== lastBucket) {
+        lastRefreshValue.current = latest;
         ScrollTrigger.refresh();
-      });
+      }
     });
 
     return () => {
       unsubscribe();
-      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [scrollYProgress]);
 

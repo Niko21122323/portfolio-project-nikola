@@ -26,7 +26,7 @@ const WhatIDoSection = () => {
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-24 bg-body">
       <div className="conainer mx-auto max-w-7xl px-6">
         <div>
           <h3 className="text-5xl text-dark/90 pb-20">

@@ -3,16 +3,16 @@ import CurvedAnimation from "@/components/CurvedAnimation";
 import AboutSectionHomePage from "@/components/AboutSectionHomePage";
 import ProjectSectionHome from "@/components/ProjectSectionHome";
 import WhatIDoSection from "@/components/WhatIDoSection";
+import SlidingImagesSection from "@/components/SlidingImagesSection";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <CurvedAnimation>
-        <AboutSectionHomePage />
-        <ProjectSectionHome />
-        <WhatIDoSection />
-      </CurvedAnimation>
+      <AboutSectionHomePage />
+      <SlidingImagesSection />
+      <ProjectSectionHome />
+      <WhatIDoSection />
       <section className="h-[30vh] bg-dark"></section>
       <section className="test h-screen bg-primary">
         <p className="text-white text-2xl">

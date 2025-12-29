@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import testImage from "../public/assets/images/project-test.webp";
+import Link from "next/link";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -80,20 +81,21 @@ export default function ProjectStack() {
       const cardElements = gsap.utils.toArray<HTMLElement>(".card");
       const spacer = document.querySelector(".stack-spacer");
       const intro = document.querySelector(".intro");
+      const introContent = document.querySelector(".intro-content");
 
-      // Pin the intro while cards are stacking
+      // Pin the intro container while cards are stacking
       ScrollTrigger.create({
         trigger: cardElements[0],
         start: "top 35%",
         endTrigger: spacer,
         end: "top 65%",
-        pin: ".intro",
+        pin: intro,
         pinSpacing: false,
       });
 
-      // Move intro up as cards stack (matching the card movement)
-      gsap.to(intro, {
-        y: `-${cardElements.length * 14}vh`, // Same distance as cards move
+      // Move intro content up as cards stack (animate the inner content, not the pinned container)
+      gsap.to(introContent, {
+        y: `-${cardElements.length * 14}vh`,
         ease: "none",
         scrollTrigger: {
           trigger: cardElements[0],
@@ -105,7 +107,6 @@ export default function ProjectStack() {
       });
 
       cardElements.forEach((card, index) => {
-        const isLastCard = index === cardElements.length - 1;
         const cardInner = card.querySelector(".card-inner");
 
         ScrollTrigger.create({
@@ -141,12 +142,17 @@ export default function ProjectStack() {
   );
 
   return (
-    <section ref={container}>
-      <div className="intro container mx-auto max-w-7xl px-6">
-        <h2 className="text-dark/90 text-4xl  max-w-2xl pb-24">
-          From idea to launch, a selection of projects I’ve built with care and
-          attention to detail
-        </h2>
+    <section ref={container} className="pb-44">
+      <div className="intro container mx-auto px-6">
+        <div className="intro-content flex flex-col items-center justify-center py-36">
+          <h2 className="text-dark/90 text-6xl pb-4 pt-10 text-center">
+            From Idea to Launch
+          </h2>
+          <p className="text-3xl text-dark/50 max-w-4xl text-center">
+            A curated selection of projects built with care, clarity, and
+            attention to detail.
+          </p>
+        </div>
       </div>
 
       <div className="cards">
@@ -159,7 +165,7 @@ export default function ProjectStack() {
             <div
               className={`card-inner relative will-change-transform w-full h-full py-10 ${card.background}`}
             >
-              <div className="container mx-auto max-w-7xl px-6">
+              <div className="container mx-auto px-6">
                 <div className="grid grid-cols-12 gap-20">
                   <div className="col-span-7">
                     <h4
