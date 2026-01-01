@@ -1,17 +1,14 @@
 import HeroSection from "@/components/HeroSection";
-import CurvedAnimation from "@/components/CurvedAnimation";
-import AboutSectionHomePage from "@/components/AboutSectionHomePage";
-import ProjectSectionHome from "@/components/ProjectSectionHome";
 import WhatIDoSection from "@/components/WhatIDoSection";
-import SlidingImagesSection from "@/components/SlidingImagesSection";
+import AboutSection from "@/components/home/AboutSection";
+import ProjectsSection from "@/components/home/ProjectsSection";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <AboutSectionHomePage />
-      <SlidingImagesSection />
-      <ProjectSectionHome />
+      <AboutSection />
+      <ProjectsSection />
       <WhatIDoSection />
       <section className="h-[30vh] bg-dark"></section>
       <section className="test h-screen bg-primary">

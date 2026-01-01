@@ -4,11 +4,11 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ButtonPrimary from "./ButtonPrimary";
+import ButtonPrimary from "../ButtonPrimary";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AboutSectionHomePage = () => {
+const AboutSection = () => {
   const container = useRef(null);
   const curveContainerRef = useRef(null);
 
@@ -35,15 +35,14 @@ const AboutSectionHomePage = () => {
   );
 
   return (
-    <section ref={container} className="relative bg-body pt-10 py-36 z-20">
-      {/* Absolutely positioned curve - doesn't affect layout */}
+    <section ref={container} className="relative bg-white z-20">
       <div
         ref={curveContainerRef}
         className="absolute top-0 left-0 w-full pointer-events-none"
         style={{ height: 0 }}
       >
         <div
-          className="absolute bottom-0 left-1/2 bg-body"
+          className="absolute bottom-0 left-1/2 bg-white"
           style={{
             width: "120%",
             height: "350%",
@@ -53,10 +52,10 @@ const AboutSectionHomePage = () => {
         />
       </div>
 
-      {/* Content - unaffected by curve */}
       <div className="container mx-auto px-8 relative z-10">
-        <div className="flex flex-col items-center justify-center gap-16 max-w-5xl mx-auto">
-          <h2 className="text-dark/90 md:text-5xl text-center text-pretty">
+        <div className="flex flex-col items-center justify-center gap-16 max-w-4xl mx-auto pt-16 pb-36">
+          <span className="text-dark/50 text-lg">About Me</span>
+          <h2 className="text-dark/90 md:text-5xl text-center text-pretty leading-tight">
             I'm Nikola, a full-stack developer crafting fast, scalable, and
             user-focused digital experiences from frontend polish to backend
             logic.
@@ -71,8 +70,14 @@ const AboutSectionHomePage = () => {
           </div>
         </div>
       </div>
+      <div className="border-b border-dark/10 pb-10">
+        <div className="container max-w-7xl mx-auto px-4 flex items-center justify-between gap-10">
+          <span className="text-lg text-dark/30">Selected Work</span>
+          <span className="text-lg text-dark/30">Scroll For More</span>
+        </div>
+      </div>
     </section>
   );
 };
 
-export default AboutSectionHomePage;
+export default AboutSection;

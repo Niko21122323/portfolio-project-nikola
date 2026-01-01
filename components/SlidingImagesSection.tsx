@@ -32,7 +32,6 @@ const SlidingImagesSection = () => {
       if (!container.current || !slider1Ref.current || !slider2Ref.current)
         return;
 
-      // Animate first slider to the right
       gsap.to(slider1Ref.current, {
         x: 150,
         ease: "none",
@@ -44,7 +43,6 @@ const SlidingImagesSection = () => {
         },
       });
 
-      // Animate second slider to the left
       gsap.to(slider2Ref.current, {
         x: -150,
         ease: "none",
@@ -69,7 +67,7 @@ const SlidingImagesSection = () => {
         {slider1.map((project) => (
           <div
             key={project.id}
-            className="w-[25%] h-[20vw] flex items-center justify-center"
+            className="w-[25%] h-[10vw] flex items-center justify-center"
             style={{ backgroundColor: project.color }}
           >
             <div className="relative w-[80%] h-[80%]">
@@ -92,7 +90,7 @@ const SlidingImagesSection = () => {
         {slider2.map((project) => (
           <div
             key={project.id}
-            className="w-[25%] h-[20vw] flex items-center justify-center"
+            className="w-[25%] h-[10vw] flex items-center justify-center"
             style={{ backgroundColor: project.color }}
           >
             <div className="relative w-[80%] h-[80%]">

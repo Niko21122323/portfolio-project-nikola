@@ -2,7 +2,7 @@
 
 :root {
   --dark: #0d0e0e;
-  --body: #f2f2f2;
+  --body: #fafafa;
   --primary: #7b61ff;
   --secondary: #dff700;
   --accent: #ff5e54;
@@ -25,16 +25,7 @@
 }
 
 body {
-  font-family: var(--font-inter);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-inter);
+  font-family: var(--font-instrument-sans);
 }
 
 .wrapper {

@@ -27,7 +27,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden h-screen">
+    <section
+      ref={heroRef}
+      className="relative overflow-hidden h-screen bg-dark"
+    >
       <div className="relative container mx-auto px-4 z-10">
         <div className="min-h-screen flex flex-col items-center justify-center">
           <div>

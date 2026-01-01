@@ -1,35 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import { SmoothScrollProvider } from "@/components/providers/gsap-smooth-provider";
 
-const inter = Inter({
-  variable: "--font-inter",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-const delight = localFont({
-  src: [
-    { path: "../public/fonts/Delight-Thin.woff2", weight: "100" },
-    { path: "../public/fonts/Delight-ExtraLight.woff2", weight: "200" },
-    { path: "../public/fonts/Delight-Light.woff2", weight: "300" },
-    { path: "../public/fonts/Delight-Regular.woff2", weight: "400" },
-    { path: "../public/fonts/Delight-Medium.woff2", weight: "500" },
-    { path: "../public/fonts/Delight-SemiBold.woff2", weight: "600" },
-    { path: "../public/fonts/Delight-Bold.woff2", weight: "700" },
-    { path: "../public/fonts/Delight-ExtraBold.woff2", weight: "800" },
-    { path: "../public/fonts/Delight-Black.woff2", weight: "900" },
-  ],
-  variable: "--font-delight",
-  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -46,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${poppins.variable} ${delight.variable} relative antialiased bg-dark`}
+        className={`${instrumentSans.variable} relative antialiased white`}
       >
         <SmoothScrollProvider>
           <Navbar />
