@@ -48,8 +48,8 @@ const ProjectsSection = () => {
             if (imgContainer) {
               ScrollTrigger.create({
                 trigger: service,
-                start: "top 80%",
-                end: "top 5%",
+                start: "top 60%",
+                end: "top 15%",
                 scrub: true,
                 onUpdate: (self: ScrollTrigger) => {
                   let progress: number = self.progress;
@@ -64,8 +64,8 @@ const ProjectsSection = () => {
 
               ScrollTrigger.create({
                 trigger: service,
-                start: "top 80%",
-                end: "top 5%",
+                start: "top 60%",
+                end: "top 15%",
                 scrub: true,
                 onUpdate: (self: ScrollTrigger) => {
                   let progress: number = self.progress;
@@ -101,31 +101,31 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section className="bg-white pt-16" ref={containerRef}>
+    <section className="bg-white pt-16 pb-36" ref={containerRef}>
       <div>
         {projects.map((project) => (
           <div
             key={project.id}
-            className="border-b border-dark/10 first:pt-0 py-16"
+            className="border-b border-border first:pt-0 py-16"
           >
             <div className="container max-w-7xl mx-auto px-4">
               <div className="grid grid-cols-12 gap-16">
                 <div className="flex flex-col justify-between col-span-5">
                   <h4 className="text-dark/85 text-[32px]">{project.title}</h4>
-                  <p className="text-base text-dark/70">
+                  <p className="text-base text-text/70">
                     {project.description}
                   </p>
                   <div className="w-fit">
                     <Link
                       href={project.pageLink}
-                      className="block rounded-full bg-dark/10 text-dark/85 px-6 py-2.5"
+                      className="block rounded-full bg-dark/10 text-text px-6 py-2.5"
                     >
                       Project Details
                     </Link>
                   </div>
                 </div>
                 <div className="col-span-7 img-container rounded-lg overflow-hidden">
-                  <div className="img w-full h-full">
+                  <div className="img w-full rounded-lg overflow-hidden h-full">
                     <Image
                       src={project.image}
                       alt={`project ${project.title} image`}

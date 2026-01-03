@@ -117,18 +117,18 @@ const ButtonPrimary = ({
       onMouseLeave={handleLinkMouseLeave}
       className="relative flex items-center group"
     >
-      <span className="relative z-10 block rounded-full text-dark bg-secondary p-2 overflow-hidden -rotate-45 group-hover:rotate-0 transition-transform duration-300 ease-in-out">
+      <span className="relative z-10 block rounded-full text-dark bg-primary p-3 overflow-hidden -rotate-45 group-hover:rotate-0 transition-transform duration-300 ease-in-out">
         <IoArrowForward
-          className={`size-5 relative z-10 transition-colors duration-300 ${hoverColor === "light" ? "" : "group-hover:text-body"}`}
+          className={`size-5 relative z-10 transition-colors duration-400 ${hoverColor === "light" ? "" : "group-hover:text-white"}`}
         />
         <div
           ref={arrowCircleRef}
           className={`absolute w-full h-[150%] top-full left-0 ${hoverColor === "light" ? "bg-body" : "bg-dark"}`}
         />
       </span>
-      <span className="relative z-10 block text-dark bg-secondary rounded-full px-6 py-2 overflow-hidden">
+      <span className="relative z-10 block text-dark bg-primary rounded-full px-8 py-3 overflow-hidden">
         <span
-          className={`relative z-10 transition-colors duration-300 ease-in-out ${hoverColor === "light" ? "" : "group-hover:text-body"}`}
+          className={`relative z-10 transition-colors duration-400 ease-in-out ${hoverColor === "light" ? "" : "group-hover:text-white"}`}
         >
           {title}
         </span>

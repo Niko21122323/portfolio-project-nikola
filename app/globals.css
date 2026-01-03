@@ -2,15 +2,17 @@
 
 :root {
   --dark: #0d0e0e;
-  --body: #fafafa;
-  --primary: #7b61ff;
-  --secondary: #dff700;
-  --accent: #ff5e54;
+  --border: #eaeaea;
+  --text: #202020;
+  --primary: #eceffa;
+  --secondary: #adbae3;
+  --accent: #3b5b8a;
 }
 
 @theme inline {
   --color-dark: var(--dark);
-  --color-body: var(--body);
+  --color-border: var(--border);
+  --color-text: var(--text);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);

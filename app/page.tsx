@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import LoopSection from "@/components/LoopSection";
 import WhatIDoSection from "@/components/WhatIDoSection";
 import AboutSection from "@/components/home/AboutSection";
 import ProjectsSection from "@/components/home/ProjectsSection";
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
+      <LoopSection />
       <WhatIDoSection />
       <section className="h-[30vh] bg-dark"></section>
       <section className="test h-screen bg-primary">
