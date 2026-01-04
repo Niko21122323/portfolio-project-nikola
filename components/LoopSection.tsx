@@ -2,50 +2,7 @@
 
 import { useEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
-import {
-  RiJavascriptFill,
-  RiTailwindCssFill,
-  RiSupabaseFill,
-} from "react-icons/ri";
-import { BiLogoTypescript } from "react-icons/bi";
-import {
-  SiNextdotjs,
-  SiAstro,
-  SiMongodb,
-  SiMysql,
-  SiPrisma,
-} from "react-icons/si";
-import { FaReact, FaNode, FaHtml5, FaCss3Alt } from "react-icons/fa";
-import { GrGraphQl } from "react-icons/gr";
-import { GiJesterHat } from "react-icons/gi";
-import { IoLogoFirebase } from "react-icons/io5";
-import { type IconType } from "react-icons";
-
-interface TechIcon {
-  id: number;
-  icon: IconType;
-}
-
-const techIcons: TechIcon[] = [
-  { id: 1, icon: RiJavascriptFill },
-  { id: 2, icon: BiLogoTypescript },
-  { id: 3, icon: SiNextdotjs },
-  { id: 4, icon: FaReact },
-  { id: 5, icon: FaNode },
-  { id: 6, icon: SiAstro },
-  { id: 7, icon: FaHtml5 },
-  { id: 8, icon: FaCss3Alt },
-  { id: 9, icon: RiTailwindCssFill },
-  { id: 10, icon: GrGraphQl },
-  { id: 11, icon: SiMongodb },
-  { id: 12, icon: SiMysql },
-  { id: 13, icon: SiPrisma },
-  { id: 14, icon: RiSupabaseFill },
-  { id: 15, icon: GiJesterHat },
-  { id: 16, icon: IoLogoFirebase },
-];
-
-const ELEMENTS: TechIcon[] = [...techIcons, ...techIcons];
+import { PiStarFourFill } from "react-icons/pi";
 
 const Marquee = () => {
   const movingContainer = useRef<HTMLDivElement>(null);
@@ -94,24 +51,25 @@ const Marquee = () => {
   const list = useMemo(
     () => (
       <div className="flex w-fit items-center">
-        {ELEMENTS.map(({ id, icon: Icon }, index) => {
-          const isLast = index === ELEMENTS.length - 1;
-          return (
-            <div
-              key={`${id}-${index}`}
-              className="relative flex shrink-0 items-center justify-center border border-border border-r-0 last:border-r px-32 py-8"
-            >
-              <Icon className="text-5xl text-dark/70" />
+        {Array.from({ length: 4 }).map((_, index) => (
+          <div key={index} className="flex items-center">
+            <div className="relative flex shrink-0 items-center justify-center py-8">
+              <span className="text-5xl uppercase font-medium text-white whitespace-nowrap">
+                What I Bring to the Table
+              </span>
             </div>
-          );
-        })}
+            <div className="relative flex shrink-0 items-center justify-center px-8 py-8">
+              <PiStarFourFill className="text-4xl text-white" />
+            </div>
+          </div>
+        ))}
       </div>
     ),
     [],
   );
 
   return (
-    <div className="w-full bg-white overflow-hidden">
+    <div className="w-full overflow-hidden">
       <div
         ref={movingContainer}
         className="flex w-fit"

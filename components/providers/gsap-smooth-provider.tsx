@@ -14,7 +14,6 @@ export function SmoothScrollProvider({
   const smootherRef = useRef<ScrollSmoother | null>(null);
 
   useEffect(() => {
-    // Initialize ScrollSmoother
     smootherRef.current = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
@@ -25,12 +24,6 @@ export function SmoothScrollProvider({
       normalizeScroll: true,
     });
 
-    // Prevent horizontal scroll from affecting smoother
-    const preventHorizontal = () => {
-      document.body.style.overflowX = "hidden";
-    };
-    preventHorizontal();
-
     return () => {
       smootherRef.current?.kill();
       smootherRef.current = null;
@@ -39,7 +32,9 @@ export function SmoothScrollProvider({
 
   return (
     <div id="smooth-wrapper" style={{ overflow: "hidden" }}>
-      <div id="smooth-content">{children}</div>
+      <div id="smooth-content" style={{ willChange: "transform" }}>
+        {children}
+      </div>
     </div>
   );
 }

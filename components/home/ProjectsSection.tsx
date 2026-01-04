@@ -3,7 +3,7 @@
 import { projects } from "@/data/data";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -13,10 +13,95 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProjectsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isDark, setIsDark] = useState(false);
+  const titlesRef = useRef<(HTMLHeadingElement | null)[]>([]);
+  const descriptionsRef = useRef<(HTMLParagraphElement | null)[]>([]);
+  const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const bordersRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(
     () => {
       const services: HTMLElement[] = gsap.utils.toArray(".img-container");
+
+      gsap.set(containerRef.current, {
+        backgroundColor: "white",
+      });
+
+      // Wait for next tick to ensure #what-i-do-section exists
+      setTimeout(() => {
+        const whatIDoSection = document.querySelector("#what-i-do-section");
+        if (whatIDoSection) {
+          gsap.to(containerRef.current, {
+            backgroundColor: "#0d0e0e",
+            scrollTrigger: {
+              trigger: whatIDoSection,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+              onEnter: () => setIsDark(true),
+              onLeaveBack: () => setIsDark(false),
+            },
+          });
+
+          // Animate all titles
+          titlesRef.current.forEach((title) => {
+            if (title) {
+              gsap.to(title, {
+                color: "#ffffff",
+                scrollTrigger: {
+                  trigger: whatIDoSection,
+                  start: "top 80%",
+                  toggleActions: "play none none reverse",
+                },
+              });
+            }
+          });
+
+          // Animate all descriptions
+          descriptionsRef.current.forEach((description) => {
+            if (description) {
+              gsap.to(description, {
+                color: "rgba(255, 255, 255, 0.7)",
+                scrollTrigger: {
+                  trigger: whatIDoSection,
+                  start: "top 80%",
+                  toggleActions: "play none none reverse",
+                },
+              });
+            }
+          });
+
+          // Animate all links
+          linksRef.current.forEach((link) => {
+            if (link) {
+              gsap.to(link, {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                color: "#ffffff",
+                scrollTrigger: {
+                  trigger: whatIDoSection,
+                  start: "top 80%",
+                  toggleActions: "play none none reverse",
+                },
+              });
+            }
+          });
+
+          // Animate all borders
+          bordersRef.current.forEach((border) => {
+            if (border) {
+              gsap.to(border, {
+                borderColor: "rgba(229, 231, 235, 0.1)", // border-border with 30% opacity
+                scrollTrigger: {
+                  trigger: whatIDoSection,
+                  start: "top 80%",
+                  toggleActions: "play none none reverse",
+                },
+              });
+            }
+          });
+        } else {
+          console.warn("what-i-do-section not found");
+        }
+      }, 100);
 
       services.forEach((service: HTMLElement) => {
         const imgContainer = service.querySelector(
@@ -103,20 +188,38 @@ const ProjectsSection = () => {
   return (
     <section className="bg-white pt-16 pb-36" ref={containerRef}>
       <div>
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <div
             key={project.id}
+            ref={(el) => {
+              bordersRef.current[index] = el;
+            }}
             className="border-b border-border first:pt-0 py-16"
           >
             <div className="container max-w-7xl mx-auto px-4">
               <div className="grid grid-cols-12 gap-16">
                 <div className="flex flex-col justify-between col-span-5">
-                  <h4 className="text-dark/85 text-[32px]">{project.title}</h4>
-                  <p className="text-base text-text/70">
+                  <h4
+                    ref={(el) => {
+                      titlesRef.current[index] = el;
+                    }}
+                    className="text-text text-[32px]"
+                  >
+                    {project.title}
+                  </h4>
+                  <p
+                    ref={(el) => {
+                      descriptionsRef.current[index] = el;
+                    }}
+                    className="text-base text-text/70"
+                  >
                     {project.description}
                   </p>
                   <div className="w-fit">
                     <Link
+                      ref={(el) => {
+                        linksRef.current[index] = el;
+                      }}
                       href={project.pageLink}
                       className="block rounded-full bg-dark/10 text-text px-6 py-2.5"
                     >
